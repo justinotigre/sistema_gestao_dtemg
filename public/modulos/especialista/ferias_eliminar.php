@@ -1,0 +1,4 @@
+<?php
+require_once __DIR__ . '/../../../App/auth.php';require_login();$pdo=db();$id=(int)($_GET['id']??0);$st=$pdo->prepare("SELECT id_ferias,id_especialista FROM ferias WHERE id_ferias=?");$st->execute([$id]);$f=$st->fetch();if(!$f){header('Location: especialistas.php');exit;}if($_SERVER['REQUEST_METHOD']==='POST'){$pdo->prepare("DELETE FROM ferias WHERE id_ferias=?")->execute([$id]);header('Location: especialista.php?id='.(int)$f['id_especialista'].'#ferias');exit;}$page_title='Eliminar Férias';require __DIR__.'/../../layout/header.php';?>
+<div class="module-page"><div class="panel form-panel"><h2>Eliminar período de férias</h2><p>Confirma a eliminação deste registo?</p><form method="post"><button class="btn btn-danger">Eliminar</button><a class="btn btn-secondary" href="especialista.php?id=<?=(int)$f['id_especialista']?>#ferias">Cancelar</a></form></div></div>
+<?php require __DIR__.'/../../layout/footer.php'; ?>

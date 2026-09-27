@@ -1,0 +1,3458 @@
+/* =========================================================
+   SISTEMA DE GESTÃO DE ESPECIALISTAS — V3
+   Layout global consolidado
+   ========================================================= */
+
+:root{
+  --topbar:72px;
+  --sidebar:268px;
+
+  --azul:#1f5f8b;
+  --azul-escuro:#16496b;
+  --azul-suave:#eaf2f7;
+
+  --fundo:#f4f7f9;
+  --superficie:#ffffff;
+  --borda:#e1e7ec;
+
+  --texto:#243443;
+  --suave:#72808d;
+
+  --sombra:0 5px 20px rgba(24,45,65,.055);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:var(--fundo);
+  color:var(--texto);
+}
+
+body{
+  min-height:100vh;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+.app-frame{
+  min-height:100vh;
+}
+
+/* =========================================================
+   TOPO
+   ========================================================= */
+
+.sistema-topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:var(--topbar);
+  z-index:5000;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  padding:0 24px;
+
+  color:#fff;
+  background:linear-gradient(
+    110deg,
+    var(--azul-escuro),
+    var(--azul)
+  );
+
+  box-shadow:0 3px 16px rgba(22,73,107,.20);
+}
+
+.sistema-marca{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.sistema-logo{
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 42px;
+
+  border-radius:11px;
+
+  background:#fff;
+  color:var(--azul-escuro);
+
+  font-weight:800;
+  letter-spacing:-.03em;
+
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
+}
+
+.sistema-titulo-wrap{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.sistema-titulo-wrap strong{
+  font-size:16px;
+  line-height:1.2;
+  white-space:nowrap;
+}
+
+.sistema-titulo-wrap small{
+  margin-top:3px;
+  font-size:10px;
+  opacity:.72;
+  white-space:nowrap;
+}
+
+.sistema-utilizador{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.perfil-utilizador{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.foto-utilizador,
+.foto-inicial{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.35);
+}
+
+.foto-inicial{
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  font-weight:700;
+}
+
+.dados-utilizador{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+}
+
+.dados-utilizador strong{
+  font-size:12px;
+}
+
+.dados-utilizador small{
+  font-size:10px;
+  opacity:.72;
+  margin-top:3px;
+}
+
+.btn-tema,
+.btn-sair{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:36px;
+  padding:0 12px;
+
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:8px;
+
+  color:#fff;
+  background:rgba(255,255,255,.09);
+
+  cursor:pointer;
+
+  font-size:11px;
+  font-weight:650;
+
+  transition:.18s ease;
+}
+
+.btn-tema:hover,
+.btn-sair:hover{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.34);
+}
+
+.btn-sair{
+  background:rgba(0,0,0,.10);
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sistema-sidebar{
+  position:fixed;
+  top:var(--topbar);
+  left:0;
+  bottom:0;
+
+  z-index:4500;
+
+  width:var(--sidebar);
+
+  padding:20px 14px;
+
+  overflow-y:auto;
+
+  background:var(--superficie);
+  border-right:1px solid var(--borda);
+}
+
+.sidebar-section-title{
+  padding:7px 11px 9px;
+
+  color:#8996a2;
+
+  font-size:10px;
+  font-weight:750;
+
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+
+.sidebar-nav{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.sidebar-link{
+  display:flex;
+  align-items:center;
+
+  gap:11px;
+
+  min-height:43px;
+  padding:10px 12px;
+
+  border-radius:9px;
+
+  color:#465563;
+
+  font-size:13px;
+  font-weight:560;
+
+  transition:.18s ease;
+}
+
+.sidebar-link:hover{
+  background:#f0f5f8;
+  color:var(--azul-escuro);
+}
+
+.sidebar-link.ativo{
+  color:#fff;
+
+  background:linear-gradient(
+    110deg,
+    var(--azul-escuro),
+    var(--azul)
+  );
+
+  box-shadow:0 5px 13px rgba(31,95,139,.18);
+}
+
+.sidebar-icon{
+  width:22px;
+  flex:0 0 22px;
+
+  text-align:center;
+  font-size:16px;
+  opacity:.9;
+}
+
+.sidebar-separator{
+  height:1px;
+  margin:17px 8px;
+  background:var(--borda);
+}
+
+.sidebar-info{
+  margin:24px 5px 5px;
+  padding:13px 14px;
+
+  border:1px solid var(--borda);
+  border-radius:11px;
+
+  background:#f8fafb;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.sidebar-info-label{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+
+  color:#8b97a2;
+
+  margin-bottom:5px;
+}
+
+.sidebar-info strong{
+  font-size:12px;
+  color:var(--texto);
+}
+
+.sidebar-info small{
+  font-size:10px;
+  color:var(--suave);
+  margin-top:3px;
+}
+
+/* =========================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================= */
+
+.app-shell{
+  margin-left:var(--sidebar);
+  min-height:100vh;
+
+  padding-top:var(--topbar);
+
+  display:flex;
+  flex-direction:column;
+}
+
+/*
+   IMPORTANTE:
+   overflow-x:hidden pode criar um contexto de scroll e
+   impedir o funcionamento esperado do position:sticky.
+
+   clip permite cortar excesso horizontal sem transformar
+   o elemento num scroll container.
+*/
+.app-content{
+  flex:1;
+
+  width:100%;
+  max-width:none;
+
+  padding:28px 30px 34px;
+
+  min-width:0;
+
+  overflow-x:clip;
+  overflow-y:visible;
+}
+
+.app-footer{
+  display:flex;
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:14px 30px;
+
+  border-top:1px solid var(--borda);
+
+  background:var(--superficie);
+
+  color:#8a96a0;
+
+  font-size:10px;
+}
+
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+.module-page{
+  width:100%;
+  max-width:none;
+
+  margin:0 auto;
+
+  min-width:0;
+}
+
+.module-page h1{
+  color:var(--texto);
+  letter-spacing:-.02em;
+}
+
+.module-page .cards{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+  gap:16px;
+}
+
+.module-page .card,
+.module-page .panel{
+  background:var(--superficie);
+
+  border:1px solid var(--borda);
+  border-radius:13px;
+
+  padding:20px;
+
+  box-shadow:var(--sombra);
+}
+
+.module-page .card small{
+  display:block;
+  color:var(--suave);
+}
+
+.module-page .card strong{
+  display:block;
+
+  font-size:29px;
+
+  margin-top:8px;
+
+  color:var(--texto);
+}
+
+.module-page .grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+  gap:18px;
+
+  margin-top:20px;
+}
+
+.module-page .chart{
+  min-height:120px;
+
+  background:#f1f5f8;
+
+  border-radius:10px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#667481;
+}
+
+.module-page .consultas{
+  margin-top:20px;
+
+  background:#fff8e5;
+
+  border:1px solid #f0dfae;
+
+  padding:15px;
+
+  border-radius:10px;
+
+  color:#3f3420;
+}
+
+.module-page input,
+.module-page select,
+.module-page textarea{
+  max-width:100%;
+
+  background:var(--superficie);
+  color:var(--texto);
+
+  border-color:var(--borda);
+}
+
+.module-page button,
+.module-page .btn{
+  cursor:pointer;
+}
+
+.config-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+  gap:18px;
+}
+
+.config-grid .panel{
+  min-height:150px;
+}
+
+.config-link{
+  display:block;
+
+  padding:10px 0;
+
+  border-bottom:1px solid #eef0f2;
+
+  color:#1f2937;
+}
+
+.config-link:last-child{
+  border-bottom:0;
+}
+
+.config-link:hover{
+  color:#0f5ea8;
+}
+
+.table-wrap{
+  width:100%;
+  max-width:100%;
+
+  overflow:auto;
+}
+
+.table-wrap table{
+  width:100%;
+
+  border-collapse:collapse;
+
+  background:var(--superficie);
+}
+
+.table-wrap th,
+.table-wrap td{
+  padding:11px 12px;
+
+  border-bottom:1px solid var(--borda);
+
+  text-align:left;
+}
+
+.form-panel{
+  max-width:980px;
+}
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:16px;
+}
+
+.form-grid label{
+  display:flex;
+  flex-direction:column;
+
+  gap:6px;
+
+  font-weight:600;
+}
+
+.form-grid .full{
+  grid-column:1/-1;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea{
+  width:100%;
+
+  padding:10px 11px;
+
+  border:1px solid var(--borda);
+
+  border-radius:8px;
+
+  background:var(--superficie);
+  color:var(--texto);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.btn{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  border:0;
+
+  padding:10px 15px;
+
+  border-radius:8px;
+}
+
+.btn-primary{
+  background:var(--azul);
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:var(--azul-escuro);
+}
+
+.btn-secondary{
+  background:#e7edf2;
+  color:#30404e;
+}
+
+.btn-danger{
+  background:#b91c1c;
+  color:#fff;
+}
+
+.erro{
+  background:#fee2e2;
+  color:#991b1b;
+
+  padding:10px;
+
+  border-radius:8px;
+
+  margin-bottom:15px;
+}
+
+.dashboard-content h1{
+  margin-top:0;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+body.login{
+  min-height:100vh;
+
+  display:grid;
+  place-items:center;
+
+  padding:25px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #e7f0f6 0,
+      #f4f7f9 42%,
+      #eef2f5 100%
+    );
+}
+
+.login-box{
+  width:min(440px,94vw);
+
+  background:#fff;
+
+  border:1px solid #e0e7ec;
+
+  padding:36px;
+
+  border-radius:18px;
+
+  box-shadow:
+    0 18px 55px rgba(24,45,65,.12);
+}
+
+.login-box h1{
+  margin:0;
+
+  color:#173f5d;
+
+  font-size:23px;
+  line-height:1.25;
+}
+
+.login-box p{
+  color:#7b8791;
+
+  margin:8px 0 24px;
+}
+
+.login-box form{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.login-box label{
+  font-size:12px;
+  font-weight:650;
+
+  color:#4d5d6a;
+
+  margin-top:6px;
+}
+
+.login-box input{
+  width:100%;
+
+  padding:12px;
+
+  border:1px solid #ccd6de;
+
+  border-radius:8px;
+
+  outline:none;
+}
+
+.login-box input:focus{
+  border-color:#5b88a5;
+
+  box-shadow:
+    0 0 0 3px rgba(31,95,139,.10);
+}
+
+.login-box button{
+  margin-top:10px;
+
+  padding:12px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:var(--azul);
+
+  color:#fff;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+.login-box button:hover{
+  background:var(--azul-escuro);
+}
+
+/* =========================================================
+   MODO ESCURO
+   ========================================================= */
+
+html.modo-escuro{
+  --fundo:#10171e;
+  --superficie:#17212a;
+  --borda:#2c3945;
+  --texto:#e7edf2;
+  --suave:#9eabb7;
+  --azul-suave:#203442;
+}
+
+html.modo-escuro body{
+  background:var(--fundo);
+  color:var(--texto);
+}
+
+html.modo-escuro .sistema-sidebar,
+html.modo-escuro .app-footer,
+html.modo-escuro .module-page .card,
+html.modo-escuro .module-page .panel,
+html.modo-escuro .table-wrap table,
+html.modo-escuro .login-box{
+  background:var(--superficie);
+  border-color:var(--borda);
+}
+
+html.modo-escuro .sidebar-link{
+  color:#b9c5ce;
+}
+
+html.modo-escuro .sidebar-link:hover{
+  background:#202d38;
+  color:#fff;
+}
+
+html.modo-escuro .sidebar-info{
+  background:#111a21;
+  border-color:var(--borda);
+}
+
+html.modo-escuro .sidebar-info strong,
+html.modo-escuro .module-page h1,
+html.modo-escuro .module-page .card strong{
+  color:#edf3f7;
+}
+
+html.modo-escuro .module-page .chart{
+  background:#111a21;
+}
+
+html.modo-escuro .module-page input,
+html.modo-escuro .module-page select,
+html.modo-escuro .module-page textarea,
+html.modo-escuro .login-box input{
+  background:#111a21;
+  border-color:#354452;
+  color:#edf3f7;
+}
+
+html.modo-escuro .btn-secondary{
+  background:#293641;
+  color:#e5edf2;
+}
+
+html.modo-escuro .login-box h1{
+  color:#dbeaf4;
+}
+
+html.modo-escuro .login-box p,
+html.modo-escuro .login-box label{
+  color:#aab7c1;
+}
+
+html.modo-escuro .app-footer{
+  color:#82909c;
+}
+
+/* =========================================================
+   RESPONSIVIDADE GLOBAL
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  :root{
+    --sidebar:230px;
+  }
+
+  .sistema-utilizador .dados-utilizador{
+    display:none;
+  }
+
+  .app-content{
+    padding:22px;
+  }
+}
+
+@media(max-width:760px){
+
+  :root{
+    --sidebar:0px;
+  }
+
+  .sistema-topbar{
+    position:relative;
+
+    height:auto;
+    min-height:68px;
+
+    padding:10px 14px;
+  }
+
+  .sistema-titulo-wrap small{
+    display:none;
+  }
+
+  .sistema-titulo-wrap strong{
+    font-size:13px;
+  }
+
+  .sistema-utilizador{
+    gap:6px;
+  }
+
+  .perfil-utilizador{
+    display:none;
+  }
+
+  .sistema-sidebar{
+    position:relative;
+
+    top:auto;
+
+    width:100%;
+    height:auto;
+
+    border-right:0;
+    border-bottom:1px solid var(--borda);
+
+    padding:10px;
+  }
+
+  .sidebar-nav{
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .sidebar-info{
+    display:none;
+  }
+
+  .app-shell{
+    margin-left:0;
+    padding-top:0;
+  }
+
+  .app-content{
+    padding:18px 14px;
+  }
+
+  .app-footer{
+    padding:12px 14px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid .full{
+    grid-column:auto;
+  }
+}
+
+/* =========================================================
+   AJUSTES FINAIS V3
+   ========================================================= */
+
+.app-content{
+  width:100%;
+  max-width:none;
+}
+
+.module-page{
+  width:100%;
+  max-width:none;
+}
+
+.module-page h1{
+  color:var(--texto);
+}
+
+.module-page .card strong{
+  color:var(--texto);
+}
+
+.module-page .chart{
+  background:#f1f5f8;
+  color:#667481;
+}
+
+.module-page .consultas{
+  background:#fff8e5;
+  color:#3f3420;
+}
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
+.table-wrap{
+  overflow:auto;
+}
+
+.table-wrap table{
+  table-layout:fixed;
+  width:100%;
+}
+
+.table-wrap th,
+.table-wrap td{
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  word-break:normal;
+}
+
+.table-wrap th{
+  color:var(--texto);
+  background:var(--azul-suave);
+}
+
+.table-wrap tr:hover td{
+  background:
+    color-mix(
+      in srgb,
+      var(--azul-suave) 55%,
+      var(--superficie)
+    );
+}
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+
+.module-page input,
+.module-page select,
+.module-page textarea{
+  background:var(--superficie);
+  color:var(--texto);
+  border-color:var(--borda);
+}
+
+.module-page label{
+  color:var(--texto);
+}
+
+.module-page .panel h1,
+.module-page .panel h2,
+.module-page .panel h3,
+.module-page .card h1,
+.module-page .card h2,
+.module-page .card h3{
+  color:var(--texto);
+}
+
+.btn-secondary{
+  background:#e7edf2;
+  color:#30404e;
+}
+
+/* =========================================================
+   FOTO DA PESQUISA DE ESPECIALISTAS
+   ========================================================= */
+
+.module-page.module-especialistas .foto-lista{
+  flex:0 0 42px;
+}
+
+/* =========================================================
+   CÂMARA
+   ========================================================= */
+
+.camera-modal{
+  display:none;
+
+  position:fixed;
+  inset:0;
+
+  z-index:9000;
+}
+
+.camera-modal.aberto{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+}
+
+.camera-modal-backdrop{
+  position:absolute;
+  inset:0;
+
+  background:rgba(0,0,0,.72);
+}
+
+.camera-dialog{
+  position:relative;
+  z-index:1;
+
+  width:min(560px,92vw);
+
+  background:var(--superficie);
+
+  border:1px solid var(--borda);
+
+  border-radius:16px;
+
+  padding:18px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35);
+}
+
+.camera-dialog-head{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:12px;
+
+  color:var(--texto);
+}
+
+.camera-close{
+  border:0;
+
+  background:transparent;
+
+  color:var(--texto);
+
+  font-size:28px;
+
+  line-height:1;
+
+  cursor:pointer;
+}
+
+#cameraVideo{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:4/3;
+
+  object-fit:cover;
+
+  background:#0b1116;
+
+  border-radius:12px;
+}
+
+.camera-status{
+  padding:10px 2px;
+
+  color:var(--suave);
+
+  font-size:13px;
+}
+
+.camera-actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:8px;
+}
+
+.camera-actions .btn{
+  min-width:110px;
+}
+
+/* =========================================================
+   EQUIPAMENTOS / CONFIGURAÇÕES
+   ========================================================= */
+
+.module-page.module-equipamentos .tabela-container,
+.module-page.module-ramos .tabela-container{
+  overflow:hidden;
+}
+
+.module-page.module-equipamentos table,
+.module-page.module-ramos table{
+  width:100%;
+  table-layout:fixed;
+}
+
+.module-page.module-equipamentos th,
+.module-page.module-equipamentos td,
+.module-page.module-ramos th,
+.module-page.module-ramos td{
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.module-page.module-equipamentos .celula-ficheiros{
+  width:190px;
+}
+
+/* =========================================================
+   MODO ESCURO — CONTEÚDO
+   ========================================================= */
+
+html.modo-escuro .module-page h1,
+html.modo-escuro .module-page h2,
+html.modo-escuro .module-page h3,
+html.modo-escuro .module-page h4,
+html.modo-escuro .module-page p,
+html.modo-escuro .module-page label,
+html.modo-escuro .module-page .contador,
+html.modo-escuro .module-page .total,
+html.modo-escuro .module-page .nome,
+html.modo-escuro .module-page .subtexto,
+html.modo-escuro .module-page .info-label,
+html.modo-escuro .module-page .info-value{
+  color:var(--texto)!important;
+}
+
+html.modo-escuro .module-page .card,
+html.modo-escuro .module-page .panel,
+html.modo-escuro .module-page .form-box,
+html.modo-escuro .module-page .section-panel,
+html.modo-escuro .module-page .profile-header,
+html.modo-escuro .module-page .profile-fixed-area,
+html.modo-escuro .module-page .tabela-container,
+html.modo-escuro .module-page .table-wrap,
+html.modo-escuro .module-page .empty,
+html.modo-escuro .module-page .search-box,
+html.modo-escuro .module-page .filtros,
+html.modo-escuro .module-page .filter-box{
+  background:var(--superficie)!important;
+  border-color:var(--borda)!important;
+  color:var(--texto)!important;
+}
+
+html.modo-escuro .module-page table{
+  background:var(--superficie)!important;
+  color:var(--texto)!important;
+}
+
+html.modo-escuro .module-page th{
+  background:#22303c!important;
+  color:#e8eef3!important;
+  border-color:var(--borda)!important;
+}
+
+html.modo-escuro .module-page td{
+  color:#dce5eb!important;
+  border-color:var(--borda)!important;
+}
+
+html.modo-escuro .module-page tr:hover td{
+  background:#1d2a35!important;
+}
+
+html.modo-escuro .module-page input,
+html.modo-escuro .module-page select,
+html.modo-escuro .module-page textarea{
+  background:#111a21!important;
+  color:#edf3f7!important;
+  border-color:#3a4a57!important;
+}
+
+html.modo-escuro .module-page input::placeholder,
+html.modo-escuro .module-page textarea::placeholder{
+  color:#81909d!important;
+}
+
+html.modo-escuro .module-page .chart{
+  background:#111a21!important;
+  color:#aab7c1!important;
+}
+
+html.modo-escuro .module-page .consultas{
+  background:#30291a!important;
+  border-color:#66572e!important;
+  color:#f0e2b6!important;
+}
+
+html.modo-escuro .module-page .badge-ativo{
+  background:#16472f!important;
+  color:#9ee2bc!important;
+}
+
+html.modo-escuro .module-page .badge-inativo{
+  background:#5b252b!important;
+  color:#ffb4bb!important;
+}
+
+html.modo-escuro .module-page .profile-photo{
+  background:#111a21!important;
+  border-color:#3a4a57!important;
+}
+
+html.modo-escuro .module-page .photo-card{
+  background:var(--superficie)!important;
+  border-color:var(--borda)!important;
+}
+
+html.modo-escuro .module-page .photo-card img{
+  background:#111a21;
+}
+
+html.modo-escuro .module-page .file-help,
+html.modo-escuro .module-page small,
+html.modo-escuro .module-page .muted{
+  color:#9eabb7!important;
+}
+
+html.modo-escuro .module-page .config-link{
+  color:#dce5eb!important;
+  border-color:var(--borda)!important;
+}
+
+html.modo-escuro .module-page .config-link:hover{
+  color:#8fc7ee!important;
+}
+
+html.modo-escuro .module-page .btn-secondary{
+  background:#2b3945!important;
+  color:#edf3f7!important;
+}
+
+html.modo-escuro .module-page .btn-danger{
+  color:#fff!important;
+}
+
+html.modo-escuro .module-page .vazio{
+  background:#17212a!important;
+  color:#b8c5cf!important;
+  border-color:var(--borda)!important;
+}
+
+/* =========================================================
+   ESPECIALISTA / EQUIPAMENTOS — DARK MODE
+   ========================================================= */
+
+html.modo-escuro .module-page.module-especialista .section,
+html.modo-escuro .module-page.module-especialista .section-panel,
+html.modo-escuro .module-page.module-especialista .info-card,
+html.modo-escuro .module-page.module-especialista .form-group,
+html.modo-escuro .module-page.module-equipamentos .card,
+html.modo-escuro .module-page.module-equipamentos .form-box{
+  color:var(--texto)!important;
+}
+
+html.modo-escuro .module-page.module-especialista .section-header,
+html.modo-escuro .module-page.module-especialista .section-title{
+  color:#eaf1f5!important;
+}
+
+/* =========================================================
+   RESPONSIVIDADE DAS TABELAS
+   ========================================================= */
+
+@media(max-width:1200px){
+
+  .module-page.module-especialistas table{
+    font-size:12px;
+  }
+
+  .module-page.module-especialistas table th,
+  .module-page.module-especialistas table td{
+    padding:8px 7px;
+  }
+
+  .module-page.module-especialistas .foto-lista{
+    width:36px;
+    height:36px;
+  }
+
+  .module-page.module-equipamentos table{
+    font-size:11px;
+  }
+}
+
+@media(max-width:900px){
+
+  .module-page.module-especialistas table{
+    font-size:11px;
+  }
+
+  .module-page.module-especialistas .foto-lista{
+    width:32px;
+    height:32px;
+  }
+}
+
+/* =========================================================
+   PERFIL DO UTILIZADOR
+   ========================================================= */
+
+.perfil-utilizador-link{
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.perfil-utilizador-link:hover{
+  filter:brightness(1.08);
+}
+
+.module-utilizador-form .form-panel{
+  max-width:none;
+}
+
+.module-utilizador-form .page-header{
+  margin-bottom:22px;
+}
+
+.module-utilizador-form .page-header h1{
+  margin:0;
+}
+
+.module-utilizador-form .page-header p{
+  color:var(--suave);
+}
+
+.module-utilizador-form .alert-sucesso{
+  background:#dff5e5;
+  color:#176b39;
+
+  border:1px solid #bfe5ca;
+
+  padding:11px 13px;
+
+  border-radius:9px;
+
+  margin-bottom:16px;
+}
+
+.module-utilizador-form .form-grid small{
+  color:var(--suave);
+  font-size:11px;
+}
+
+.module-utilizador-form select[multiple]{
+  height:auto;
+  min-height:120px;
+}
+
+.foto-edicao{
+  display:flex;
+  align-items:center;
+
+  gap:16px;
+
+  padding:14px;
+
+  border:1px solid var(--borda);
+
+  border-radius:12px;
+
+  background:var(--azul-suave);
+}
+
+.foto-edicao-preview{
+  width:78px;
+  height:78px;
+
+  border-radius:50%;
+
+  overflow:hidden;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--superficie);
+
+  border:2px solid var(--borda);
+
+  font-size:28px;
+  font-weight:700;
+
+  color:var(--azul);
+}
+
+.foto-edicao-preview img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.foto-edicao>div:last-child{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.foto-edicao input[type=file]{
+  margin-top:4px;
+}
+
+html.modo-escuro .module-utilizador-form .alert-sucesso{
+  background:#173b29;
+  color:#a9e3bd;
+  border-color:#285d40;
+}
+
+.module-utilizador-form input,
+.module-utilizador-form select,
+.module-utilizador-form textarea{
+  background:var(--superficie);
+  color:var(--texto);
+  border-color:var(--borda);
+}
+
+/* =========================================================
+   ESTRUTURA GLOBAL FINAL
+   ========================================================= */
+
+.sistema-utilizador{
+  margin-left:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+
+  gap:10px;
+
+  flex:0 0 auto;
+}
+
+.perfil-utilizador-link{
+  flex:0 0 auto;
+}
+
+.perfil-utilizador-link:hover .foto-utilizador,
+.perfil-utilizador-link:hover .foto-inicial{
+  transform:scale(1.04);
+
+  border-color:rgba(255,255,255,.75);
+}
+
+.foto-utilizador,
+.foto-inicial{
+  transition:
+    transform .16s ease,
+    border-color .16s ease;
+}
+
+.btn-tema,
+.btn-sair{
+  min-width:72px;
+  height:38px;
+
+  padding:0 14px;
+
+  white-space:nowrap;
+}
+
+.btn-sair{
+  min-width:62px;
+}
+
+/*
+   NÃO usar overflow-x:hidden aqui.
+   Isso pode interferir com position:sticky.
+*/
+.app-content{
+  overflow-x:clip;
+  overflow-y:visible;
+}
+
+.module-page{
+  min-width:0;
+}
+
+/* =========================================================
+   TABELAS DOS MÓDULOS
+   ========================================================= */
+
+.module-page .tabela-container,
+.module-page .table-wrap{
+  width:100%;
+  max-width:100%;
+
+  overflow:auto;
+}
+
+.module-page table{
+  max-width:100%;
+}
+
+/* =========================================================
+   ESPECIALISTAS — TABELA
+   ========================================================= */
+
+.module-especialistas .tabela-container{
+  overflow:auto;
+}
+
+.module-especialistas table{
+  min-width:0;
+
+  width:100%;
+
+  table-layout:fixed;
+}
+
+.module-especialistas th:nth-child(1),
+.module-especialistas td:nth-child(1){
+  width:58px;
+}
+
+.module-especialistas th:nth-child(2),
+.module-especialistas td:nth-child(2){
+  width:18%;
+}
+
+.module-especialistas th:nth-child(3),
+.module-especialistas td:nth-child(3){
+  width:9%;
+}
+
+.module-especialistas th:nth-child(4),
+.module-especialistas td:nth-child(4){
+  width:8%;
+}
+
+.module-especialistas th:nth-child(5),
+.module-especialistas td:nth-child(5){
+  width:11%;
+}
+
+.module-especialistas th:nth-child(6),
+.module-especialistas td:nth-child(6){
+  width:11%;
+}
+
+.module-especialistas th:nth-child(7),
+.module-especialistas td:nth-child(7){
+  width:11%;
+}
+
+.module-especialistas th:nth-child(8),
+.module-especialistas td:nth-child(8){
+  width:9%;
+}
+
+.module-especialistas th:nth-child(9),
+.module-especialistas td:nth-child(9){
+  width:105px;
+}
+
+.module-especialistas .acoes{
+  justify-content:center;
+  gap:4px;
+}
+
+.module-especialistas .acoes .btn{
+  min-width:0;
+
+  width:48px;
+  height:30px;
+
+  padding:0 5px;
+
+  font-size:10px;
+}
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+.module-especialistas .filtros,
+.module-utilizadores .filtros{
+  width:100%;
+  overflow:hidden;
+}
+
+.module-especialistas .filtros-grid{
+  grid-template-columns:
+    minmax(180px,2fr)
+    minmax(120px,1fr)
+    minmax(120px,1fr)
+    minmax(120px,1fr)
+    150px;
+}
+
+.module-especialistas .filtro-acoes{
+  grid-template-columns:1fr 1fr;
+
+  min-width:0;
+}
+
+.module-especialistas .filtro-acoes .btn{
+  width:100%;
+  min-width:0;
+}
+
+/* =========================================================
+   UTILIZADORES
+   ========================================================= */
+
+.module-utilizadores .tabela-container{
+  overflow:auto;
+}
+
+.module-utilizadores table{
+  min-width:0;
+
+  width:100%;
+
+  table-layout:fixed;
+}
+
+.module-utilizadores th:nth-child(1),
+.module-utilizadores td:nth-child(1){
+  width:58px;
+}
+
+.module-utilizadores th:nth-child(2),
+.module-utilizadores td:nth-child(2){
+  width:18%;
+}
+
+.module-utilizadores th:nth-child(3),
+.module-utilizadores td:nth-child(3){
+  width:20%;
+}
+
+.module-utilizadores th:nth-child(4),
+.module-utilizadores td:nth-child(4){
+  width:15%;
+}
+
+.module-utilizadores th:nth-child(5),
+.module-utilizadores td:nth-child(5){
+  width:16%;
+}
+
+.module-utilizadores th:nth-child(6),
+.module-utilizadores td:nth-child(6){
+  width:9%;
+}
+
+.module-utilizadores th:nth-child(7),
+.module-utilizadores td:nth-child(7){
+  width:92px;
+}
+
+.module-utilizadores .acoes{
+  justify-content:center;
+}
+
+.module-utilizadores .acoes .btn{
+  min-width:0;
+
+  width:52px;
+  height:30px;
+
+  padding:0 5px;
+
+  font-size:10px;
+}
+
+/* =========================================================
+   CABEÇALHOS DOS MÓDULOS
+   ========================================================= */
+
+.module-page .page-header{
+  min-width:0;
+}
+
+.module-page .page-header .btn{
+  white-space:nowrap;
+}
+
+/* =========================================================
+   RESPONSIVIDADE DOS FILTROS
+   ========================================================= */
+
+@media(max-width:1200px){
+
+  .sistema-topbar{
+    padding:0 18px;
+  }
+
+  .module-especialistas .filtros-grid,
+  .module-utilizadores .filtros-grid{
+    grid-template-columns:
+      2fr
+      1fr
+      1fr;
+  }
+
+  .module-especialistas .filtro-acoes,
+  .module-utilizadores .filtro-acoes{
+    grid-column:1/-1;
+
+    max-width:310px;
+  }
+}
+
+@media(max-width:760px){
+
+  .sistema-utilizador{
+    gap:6px;
+  }
+
+  .dados-utilizador{
+    display:none;
+  }
+
+  .btn-tema,
+  .btn-sair{
+    min-width:auto;
+
+    padding:0 10px;
+  }
+}
+
+/* =========================================================
+   FICHA DO ESPECIALISTA
+   ========================================================= */
+
+.module-page.module-especialista .page{
+  width:100%;
+  max-width:1500px;
+
+  margin:0 auto;
+
+  padding:6px 0 30px;
+}
+
+.module-page.module-especialista .profile-header{
+  position:relative;
+
+  display:block;
+
+  background:var(--superficie);
+
+  border:1px solid var(--borda);
+
+  border-radius:16px;
+
+  padding:68px 22px 22px;
+
+  box-shadow:var(--sombra);
+
+  margin-bottom:14px;
+}
+
+.module-page.module-especialista .profile-main{
+  display:grid;
+
+  grid-template-columns:
+    220px minmax(0,1fr);
+
+  gap:24px;
+
+  align-items:stretch;
+
+  min-width:0;
+}
+
+.module-page.module-especialista .profile-photo{
+  width:220px;
+  height:280px;
+  min-width:220px;
+
+  position:relative;
+  overflow:hidden;
+
+  border:1px solid var(--borda);
+
+  border-radius:15px;
+
+  background:var(--azul-suave);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+}
+
+.module-page.module-especialista .profile-photo img{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+}
+
+.module-page.module-especialista .profile-placeholder{
+  font-size:64px;
+  color:var(--suave);
+}
+
+.module-page.module-especialista .profile-photo-controls{
+  position:absolute;
+
+  left:8px;
+  right:8px;
+  bottom:8px;
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:6px;
+
+  opacity:1;
+
+  transform:none;
+
+  pointer-events:auto;
+}
+
+.module-page.module-especialista .photo-hover-btn{
+  width:34px;
+  height:34px;
+
+  border:1px solid rgba(255,255,255,.22);
+
+  border-radius:8px;
+
+  background:rgba(15,23,42,.88);
+
+  color:#fff;
+
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.16);
+}
+
+.module-page.module-especialista .photo-hover-btn:hover{
+  background:var(--azul);
+}
+
+.module-page.module-especialista .profile-info{
+  min-width:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+.module-page.module-especialista .profile-name{
+  margin:0 0 16px;
+
+  color:var(--texto);
+
+  font-size:30px;
+
+  line-height:1.12;
+
+  letter-spacing:-.025em;
+}
+
+.module-page.module-especialista .profile-summary-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,minmax(120px,1fr));
+
+  gap:10px;
+
+  width:100%;
+}
+
+.module-page.module-especialista .profile-summary-item{
+  min-width:0;
+
+  padding:11px 13px;
+
+  border:1px solid var(--borda);
+
+  border-radius:10px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--superficie) 82%,
+      var(--azul-suave)
+    );
+}
+
+.module-page.module-especialista .summary-label{
+  display:block;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.06em;
+
+  color:var(--suave);
+
+  font-weight:750;
+
+  margin-bottom:5px;
+}
+
+.module-page.module-especialista .summary-value{
+  display:block;
+
+  min-width:0;
+
+  font-size:14px;
+
+  font-weight:650;
+
+  color:var(--texto);
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+.module-page.module-especialista .sigla-tooltip{
+  border-bottom:1px dotted currentColor;
+
+  cursor:help;
+}
+
+/* =========================================================
+   BOTÕES DA FICHA
+   ========================================================= */
+
+.module-page.module-especialista .profile-actions{
+  position:absolute;
+
+  top:20px;
+  right:18px;
+
+  display:grid;
+
+  grid-template-columns:
+    max-content max-content;
+
+  align-items:center;
+
+  justify-content:end;
+
+  gap:6px;
+
+  width:auto;
+
+  max-width:calc(100% - 24px);
+
+  z-index:20;
+}
+
+.module-page.module-especialista .profile-actions .btn{
+  min-width:76px;
+
+  justify-content:center;
+}
+
+.module-page.module-especialista .profile-actions .print-menu{
+  margin:0;
+
+  position:relative;
+}
+
+.module-page.module-especialista .profile-actions .btn{
+  min-width:68px;
+
+  justify-content:center;
+}
+
+.module-page.module-especialista .profile-actions .print-menu{
+  margin:0;
+}
+
+@media(max-width:700px){
+
+  .module-page.module-especialista .profile-header{
+    padding-top:94px;
+  }
+
+  .module-page.module-especialista .profile-actions{
+    max-width:250px;
+
+    gap:4px;
+  }
+
+  .module-page.module-especialista .profile-actions .btn{
+    min-width:62px;
+
+    padding:5px 7px;
+
+    font-size:10px;
+  }
+}
+
+/* =========================================================
+   BOTÕES GERAIS DA FICHA
+   ========================================================= */
+
+.module-page.module-especialista .btn{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-height:34px;
+
+  padding:7px 11px;
+
+  border:0;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  text-decoration:none;
+
+  font-size:12px;
+  font-weight:650;
+}
+
+.module-page.module-especialista .btn-primary{
+  background:var(--azul);
+  color:#fff;
+}
+
+.module-page.module-especialista .btn-primary:hover{
+  background:var(--azul-escuro);
+}
+
+.module-page.module-especialista .btn-secondary{
+  background:#e7edf2;
+  color:#30404e;
+}
+
+.module-page.module-especialista .btn-danger{
+  background:#b91c1c;
+  color:#fff;
+}
+
+.module-page.module-especialista .btn-compact{
+  min-height:32px;
+
+  padding:6px 10px;
+
+  font-size:11px;
+}
+
+/* =========================================================
+   MENU DE IMPRESSÃO
+   ========================================================= */
+
+.module-page.module-especialista .print-menu{
+  position:relative;
+
+  display:inline-block;
+}
+
+.module-page.module-especialista .print-menu-panel{
+  position:fixed;
+
+  right:24px;
+
+  top:calc(var(--topbar) + 12px);
+
+  width:min(350px,calc(100vw - 30px));
+
+  max-height:
+    calc(100vh - var(--topbar) - 28px);
+
+  overflow:auto;
+
+  background:var(--superficie);
+
+  border:1px solid var(--borda);
+
+  border-radius:13px;
+
+  box-shadow:
+    0 18px 45px rgba(15,23,42,.18);
+
+  padding:9px;
+
+  display:none;
+
+  z-index:7000;
+}
+
+.module-page.module-especialista .print-menu.open .print-menu-panel{
+  display:block;
+}
+
+.module-page.module-especialista .print-menu-panel a{
+  display:block;
+
+  padding:9px 11px;
+
+  border-radius:8px;
+
+  color:var(--texto);
+}
+
+.module-page.module-especialista .print-menu-panel a:hover{
+  background:var(--azul-suave);
+}
+
+.module-page.module-especialista .print-menu-title{
+  padding:7px 10px 5px;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  letter-spacing:.07em;
+
+  text-transform:uppercase;
+
+  color:var(--suave);
+}
+
+.module-page.module-especialista .print-menu-sep{
+  height:1px;
+
+  background:var(--borda);
+
+  margin:6px 0;
+}
+
+.module-page.module-especialista .print-menu-note{
+  padding:8px 10px;
+
+  background:var(--azul-suave);
+
+  border-radius:8px;
+
+  color:var(--suave);
+
+  font-size:11px;
+
+  line-height:1.4;
+}
+
+/* =========================================================
+   BARRA DE SEPARADORES DA FICHA
+   ========================================================= */
+
+/*
+   ESTA É A BARRA:
+
+   Dados Pessoais
+   Serviço
+   Familiares
+   Formações
+   Habilitações
+   Condecorações
+   Férias
+   Fotografias
+   Documentos
+
+   Ela permanece fixa durante a rolagem.
+*/
+
+.module-page.module-especialista .tabs{
+  display:flex;
+
+  align-items:center;
+
+  gap:4px;
+
+  flex-wrap:wrap;
+
+  background:var(--superficie);
+
+  border:1px solid var(--borda);
+
+  border-radius:13px;
+
+  padding:7px;
+
+  margin-bottom:14px;
+
+  box-shadow:var(--sombra);
+
+  /*
+     Sticky precisa estar relativo à página.
+  */
+  position:sticky !important;
+
+  /*
+     Fica imediatamente abaixo do cabeçalho superior.
+  */
+  top:var(--topbar) !important;
+
+  /*
+     O topbar tem z-index 5000.
+     A barra fica abaixo dele, mas acima do conteúdo.
+  */
+  z-index:4900 !important;
+}
+
+.module-page.module-especialista .tabs a{
+  padding:9px 12px;
+
+  border-radius:8px;
+
+  color:var(--texto);
+
+  font-size:13px;
+
+  text-decoration:none;
+
+  white-space:nowrap;
+
+  transition:.15s ease;
+}
+
+.module-page.module-especialista .tabs a:hover{
+  background:var(--azul-suave);
+}
+
+.module-page.module-especialista .tabs a.active{
+  background:var(--azul-suave);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(31,95,139,.16);
+
+  font-weight:750;
+
+  color:var(--azul-escuro);
+}
+
+/* =========================================================
+   PAINÉIS DA FICHA
+   ========================================================= */
+
+.module-page.module-especialista .section-panel{
+  display:none;
+
+  background:var(--superficie);
+
+  border:1px solid var(--borda);
+
+  border-radius:16px;
+
+  padding:22px;
+
+  margin-bottom:16px;
+
+  box-shadow:var(--sombra);
+
+  color:var(--texto);
+}
+
+.module-page.module-especialista .section-panel.active-section{
+  display:block;
+}
+
+.module-page.module-especialista .section-header{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:14px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:16px;
+}
+
+.module-page.module-especialista .section-header h2{
+  margin:0;
+
+  color:var(--texto);
+
+  font-size:22px;
+
+  letter-spacing:-.015em;
+}
+
+.module-page.module-especialista .section-header-actions{
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  flex-wrap:wrap;
+
+  justify-content:flex-end;
+}
+
+/* =========================================================
+   INFORMAÇÕES
+   ========================================================= */
+
+.module-page.module-especialista .info-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:10px;
+}
+
+.module-page.module-especialista .info-item{
+  min-width:0;
+
+  background:var(--azul-suave);
+
+  border:1px solid var(--borda);
+
+  border-radius:10px;
+
+  padding:12px;
+}
+
+.module-page.module-especialista .info-label{
+  display:block;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.05em;
+
+  color:var(--suave);
+
+  font-weight:750;
+
+  margin-bottom:5px;
+}
+
+.module-page.module-especialista .info-value{
+  font-size:13px;
+
+  font-weight:600;
+
+  color:var(--texto);
+
+  overflow-wrap:anywhere;
+}
+
+/* =========================================================
+   TABELAS DA FICHA
+   ========================================================= */
+
+.module-page.module-especialista .table-wrap{
+  width:100%;
+
+  max-width:100%;
+
+  overflow:auto;
+
+  border:1px solid var(--borda);
+
+  border-radius:11px;
+}
+
+.module-page.module-especialista table{
+  width:100%;
+
+  border-collapse:collapse;
+
+  table-layout:auto;
+
+  background:var(--superficie);
+
+  color:var(--texto);
+}
+
+.module-page.module-especialista th,
+.module-page.module-especialista td{
+  padding:10px 11px;
+
+  border-bottom:1px solid var(--borda);
+
+  text-align:left;
+
+  vertical-align:middle;
+}
+
+.module-page.module-especialista th{
+  background:var(--azul-suave);
+
+  font-size:11px;
+
+  color:var(--texto);
+
+  font-weight:750;
+
+  white-space:nowrap;
+}
+
+.module-page.module-especialista td{
+  font-size:12px;
+
+  color:var(--texto);
+}
+
+.module-page.module-especialista tbody tr:last-child td{
+  border-bottom:0;
+}
+
+.module-page.module-especialista tbody tr:hover td{
+  background:
+    color-mix(
+      in srgb,
+      var(--azul-suave) 55%,
+      var(--superficie)
+    );
+}
+
+/* =========================================================
+   VAZIO
+   ========================================================= */
+
+.module-page.module-especialista .empty{
+  padding:26px;
+
+  text-align:center;
+
+  border:1px dashed var(--borda);
+
+  border-radius:11px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--superficie) 80%,
+      var(--azul-suave)
+    );
+
+  color:var(--suave);
+}
+
+/* =========================================================
+   FORMULÁRIOS DA FICHA
+   ========================================================= */
+
+.module-page.module-especialista .form-box{
+  padding:16px;
+
+  border:1px solid var(--borda);
+
+  border-radius:12px;
+
+  background:var(--azul-suave);
+
+  margin-bottom:16px;
+}
+
+.module-page.module-especialista .form-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:13px;
+}
+
+.module-page.module-especialista .form-group{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:5px;
+
+  min-width:0;
+}
+
+.module-page.module-especialista .form-group.full{
+  grid-column:1/-1;
+}
+
+.module-page.module-especialista .form-group label{
+  font-size:12px;
+
+  font-weight:650;
+
+  color:var(--texto);
+}
+
+.module-page.module-especialista .form-group input,
+.module-page.module-especialista .form-group select,
+.module-page.module-especialista .form-group textarea{
+  width:100%;
+
+  padding:9px 10px;
+
+  border:1px solid var(--borda);
+
+  border-radius:8px;
+
+  background:var(--superficie);
+
+  color:var(--texto);
+}
+
+.module-page.module-especialista .form-group textarea{
+  min-height:90px;
+
+  resize:vertical;
+}
+
+.module-page.module-especialista .form-actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:7px;
+
+  flex-wrap:wrap;
+
+  margin-top:12px;
+}
+
+/* =========================================================
+   FOTOGRAFIAS
+   ========================================================= */
+
+.module-page.module-especialista .photo-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(170px,1fr));
+
+  gap:13px;
+}
+
+.module-page.module-especialista .photo-card{
+  overflow:hidden;
+
+  border:1px solid var(--borda);
+
+  border-radius:12px;
+
+  background:var(--superficie);
+}
+
+.module-page.module-especialista .photo-card img{
+  width:100%;
+
+  height:200px;
+
+  object-fit:cover;
+
+  background:var(--azul-suave);
+}
+
+.module-page.module-especialista .photo-info{
+  padding:10px;
+
+  color:var(--texto);
+
+  font-size:12px;
+}
+
+/* =========================================================
+   DOCUMENTOS
+   ========================================================= */
+
+.module-page.module-especialista .document-actions{
+  display:flex;
+
+  align-items:center;
+
+  gap:4px;
+
+  flex-wrap:wrap;
+}
+
+.module-page.module-especialista .inline-form{
+  display:inline-flex;
+
+  margin:0;
+}
+
+.module-page.module-especialista .file-help{
+  font-size:11px;
+
+  color:var(--suave);
+}
+
+/* =========================================================
+   MODAL DE SOLICITAÇÃO
+   ========================================================= */
+
+.module-page.module-especialista .request-modal{
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(15,23,42,.55);
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+
+  z-index:8000;
+}
+
+.module-page.module-especialista .request-modal.open{
+  display:flex;
+}
+
+.module-page.module-especialista .request-modal-card{
+  width:min(620px,100%);
+
+  background:var(--superficie);
+
+  color:var(--texto);
+
+  border:1px solid var(--borda);
+
+  border-radius:16px;
+
+  padding:20px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.25);
+}
+
+.module-page.module-especialista .request-options{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:9px;
+
+  margin-top:14px;
+}
+
+.module-page.module-especialista .request-option{
+  border:1px solid var(--borda);
+
+  border-radius:10px;
+
+  padding:12px;
+
+  background:var(--azul-suave);
+
+  text-align:left;
+
+  color:var(--texto);
+
+  cursor:pointer;
+}
+
+.module-page.module-especialista .request-option:hover{
+  border-color:var(--azul);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--azul-suave) 75%,
+      var(--superficie)
+    );
+}
+
+.module-page.module-especialista .alert-success{
+  padding:11px 13px;
+
+  border-radius:9px;
+
+  margin-bottom:14px;
+
+  background:#dff5e5;
+
+  color:#176b39;
+
+  border:1px solid #bfe5ca;
+}
+
+/* =========================================================
+   CÂMARA — FICHA
+   ========================================================= */
+
+.camera-modal{
+  position:fixed;
+
+  inset:0;
+
+  z-index:9000;
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+}
+
+.camera-modal.aberto{
+  display:flex;
+}
+
+.camera-modal-backdrop{
+  position:absolute;
+
+  inset:0;
+
+  background:rgba(0,0,0,.72);
+}
+
+.camera-dialog{
+  position:relative;
+
+  z-index:1;
+
+  width:min(600px,94vw);
+
+  background:var(--superficie);
+
+  color:var(--texto);
+
+  border:1px solid var(--borda);
+
+  border-radius:16px;
+
+  padding:18px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35);
+}
+
+.camera-dialog-head{
+  display:flex;
+
+  align-items:flex-start;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:12px;
+}
+
+.camera-dialog-head h2{
+  margin:0 0 4px;
+
+  font-size:20px;
+}
+
+.camera-dialog-head p{
+  margin:0;
+
+  color:var(--suave);
+
+  font-size:12px;
+}
+
+.camera-close{
+  border:0;
+
+  background:transparent;
+
+  color:var(--texto);
+
+  font-size:28px;
+
+  line-height:1;
+
+  cursor:pointer;
+}
+
+.camera-dialog #cameraVideo{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:4/3;
+
+  object-fit:cover;
+
+  background:#0b1116;
+
+  border-radius:11px;
+}
+
+.camera-status{
+  padding:9px 2px;
+
+  color:var(--suave);
+
+  font-size:12px;
+}
+
+.camera-actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:7px;
+}
+
+.camera-actions .btn{
+  min-width:100px;
+}
+
+/* =========================================================
+   RESPONSIVIDADE DA FICHA
+   ========================================================= */
+
+@media(max-width:1200px){
+
+  .module-page.module-especialista .profile-summary-grid{
+    grid-template-columns:
+      repeat(2,minmax(120px,1fr));
+  }
+
+  .module-page.module-especialista .profile-main{
+    grid-template-columns:
+      190px minmax(0,1fr);
+  }
+
+  .module-page.module-especialista .profile-photo{
+    width:190px;
+
+    min-width:190px;
+
+    height:245px;
+  }
+
+  .module-page.module-especialista .info-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+}
+
+/*
+   IMPORTANTE:
+   Não colocamos position:static aqui.
+   A barra continua sticky também em tablet.
+*/
+
+@media(max-width:820px){
+
+  .module-page.module-especialista .profile-header{
+    grid-template-columns:1fr;
+  }
+
+  .module-page.module-especialista .profile-actions{
+    max-width:none;
+
+    justify-content:flex-start;
+  }
+
+  .module-page.module-especialista .profile-main{
+    grid-template-columns:
+      160px minmax(0,1fr);
+  }
+
+  .module-page.module-especialista .profile-photo{
+    width:160px;
+
+    min-width:160px;
+
+    height:210px;
+  }
+
+  /*
+     A barra continua fixa.
+  */
+  .module-page.module-especialista .tabs{
+    position:sticky !important;
+
+    top:var(--topbar) !important;
+
+    z-index:4900 !important;
+  }
+
+  .module-page.module-especialista .section-panel{
+    padding:16px;
+  }
+}
+
+@media(max-width:650px){
+
+  .module-page.module-especialista .page{
+    padding:0 0 20px;
+  }
+
+  .module-page.module-especialista .profile-header{
+    padding:14px;
+
+    gap:14px;
+  }
+
+  .module-page.module-especialista .profile-main{
+    grid-template-columns:1fr;
+  }
+
+  .module-page.module-especialista .profile-photo{
+    width:150px;
+
+    min-width:150px;
+
+    height:190px;
+  }
+
+  .module-page.module-especialista .profile-name{
+    font-size:24px;
+  }
+
+  .module-page.module-especialista .profile-summary-grid,
+  .module-page.module-especialista .info-grid,
+  .module-page.module-especialista .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  /*
+     Em telemóveis o topbar deixa de ser fixed.
+     Assim, quando a página rolar, a barra dos separadores
+     fica colada ao topo do ecrã.
+  */
+  .module-page.module-especialista .tabs{
+    position:sticky !important;
+
+    top:0 !important;
+
+    z-index:4900 !important;
+
+    overflow-x:auto;
+
+    flex-wrap:nowrap;
+  }
+
+  .module-page.module-especialista .tabs a{
+    flex:0 0 auto;
+  }
+
+  .module-page.module-especialista .request-options{
+    grid-template-columns:1fr;
+  }
+}
+
+/* =========================================================
+   IMPRESSÃO
+   ========================================================= */
+
+@media print{
+
+  .module-page.module-especialista .tabs,
+  .module-page.module-especialista .profile-actions,
+  .module-page.module-especialista .section-header-actions,
+  .module-page.module-especialista .form-box,
+  .module-page.module-especialista .document-actions,
+  .module-page.module-especialista .profile-photo-controls,
+  .request-modal,
+  .camera-modal,
+  .app-footer,
+  .sistema-sidebar,
+  .sistema-topbar{
+    display:none!important;
+  }
+
+  .module-page.module-especialista .page{
+    max-width:none;
+
+    padding:0;
+  }
+
+  .module-page.module-especialista .profile-header,
+  .module-page.module-especialista .section-panel{
+    box-shadow:none;
+
+    border:1px solid #ddd;
+  }
+
+  .module-page.module-especialista .section-panel{
+    display:block!important;
+
+    break-inside:avoid;
+  }
+
+  .module-page.module-especialista .profile-photo{
+    width:170px;
+
+    min-width:170px;
+
+    height:210px;
+  }
+}
+
+/* =========================================================
+   CORREÇÃO FINAL — MENU IMPRIMIR ACIMA DA BARRA DE SECÇÕES
+   ========================================================= */
+
+.module-page.module-especialista .profile-actions{
+    position:absolute;
+    z-index:6000 !important;
+}
+
+.module-page.module-especialista .print-menu{
+    position:relative;
+    z-index:7000 !important;
+}
+
+.module-page.module-especialista .print-menu-panel{
+    position:fixed !important;
+    z-index:8000 !important;
+}
+
+/* =========================================================
+   CORREÇÃO FINAL — BARRA DE SECÇÕES DO ESPECIALISTA
+   ---------------------------------------------------------
+   A barra é normal até o seu ponto original chegar ao topo.
+   Depois fica fixed. Ao subir e regressar ao ponto original,
+   volta a position:relative.
+   ========================================================= */
+
+.module-page.module-especialista .tabs{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    width:auto !important;
+    z-index:20 !important;
+    box-sizing:border-box !important;
+}
+
+.module-page.module-especialista .tabs-placeholder{
+    display:block !important;
+    width:100% !important;
+    height:0;
+    margin:0;
+    padding:0;
+    border:0;
+    pointer-events:none;
+}
+
+.module-page.module-especialista .tabs-placeholder.active{
+    display:block !important;
+}
+
+.module-page.module-especialista .tabs.tabs-fixed{
+    position:fixed !important;
+    top:var(--topbar) !important;
+    left:var(--tabs-left) !important;
+    width:var(--tabs-width) !important;
+    height:var(--tabs-height) !important;
+    margin:0 !important;
+    z-index:4900 !important;
+    box-sizing:border-box !important;
+    border-radius:0 0 13px 13px !important;
+    box-shadow:0 8px 24px rgba(15,23,42,.14) !important;
+}
+
+@media(max-width:1200px){
+    .module-page.module-especialistas table th,
+    .module-page.module-especialistas table td{
+        padding:7px 5px;
+        font-size:11px;
+    }
+
+    .module-page.module-especialistas .foto-lista{
+        width:38px;
+        height:38px;
+        min-width:38px;
+    }
+
+    .module-page.module-especialistas .acoes .btn{
+        min-width:38px;
+        height:28px;
+        padding:0 5px;
+        font-size:9px;
+    }
+}
+
+@media(max-width:900px){
+    .module-page.module-especialistas table{
+        min-width:900px;
+    }
+}
+
+@media(max-width:760px){
+    .module-page.module-especialista .tabs{
+        position:relative !important;
+        top:auto !important;
+        overflow-x:auto !important;
+        overflow-y:hidden !important;
+        flex-wrap:nowrap !important;
+    }
+
+    .module-page.module-especialista .tabs.tabs-fixed{
+        position:fixed !important;
+        top:0 !important;
+        left:0 !important;
+        width:100% !important;
+        height:auto !important;
+        border-radius:0 0 12px 12px !important;
+    }
+
+    .module-page.module-especialista .tabs a{
+        flex:0 0 auto;
+    }
+}
+
+@media print{
+    .module-page.module-especialista .tabs-placeholder{
+        display:none !important;
+    }
+
+    .module-page.module-especialista .tabs,
+    .module-page.module-especialista .tabs.tabs-fixed{
+        position:static !important;
+        left:auto !important;
+        top:auto !important;
+        width:auto !important;
+        height:auto !important;
+    }
+}
+
+
+/* =========================================================
+   ESPECIALISTAS — TABELA COMPACTA E CONSISTENTE
+   ---------------------------------------------------------
+   Esta é a ÚNICA regra final de dimensionamento da tabela.
+   Não usar percentagens nem table-layout:fixed aqui, porque
+   isso faz o navegador distribuir o espaço vazio entre as
+   colunas e cria os grandes intervalos visíveis no ecrã.
+   ========================================================= */
+
+.module-page.module-especialistas .tabela-container,
+.module-page.module-especialistas .table-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+}
+
+.module-page.module-especialistas table{
+    width:max-content !important;
+    min-width:967px !important;
+    max-width:none !important;
+    table-layout:auto !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+}
+
+.module-page.module-especialistas table th,
+.module-page.module-especialistas table td{
+    box-sizing:border-box !important;
+    padding:8px 8px !important;
+    vertical-align:middle !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+}
+
+/* FOTO */
+.module-page.module-especialistas table th:nth-child(1),
+.module-page.module-especialistas table td:nth-child(1){
+    width:72px !important;
+    min-width:72px !important;
+    max-width:72px !important;
+    text-align:center !important;
+}
+
+/* ESPECIALISTA */
+.module-page.module-especialistas table th:nth-child(2),
+.module-page.module-especialistas table td:nth-child(2){
+    width:180px !important;
+    min-width:180px !important;
+    max-width:180px !important;
+    white-space:normal !important;
+}
+
+/* NIP */
+.module-page.module-especialistas table th:nth-child(3),
+.module-page.module-especialistas table td:nth-child(3){
+    width:110px !important;
+    min-width:110px !important;
+    max-width:110px !important;
+    white-space:nowrap !important;
+}
+
+/* PATENTE */
+.module-page.module-especialistas table th:nth-child(4),
+.module-page.module-especialistas table td:nth-child(4){
+    width:85px !important;
+    min-width:85px !important;
+    max-width:85px !important;
+    white-space:nowrap !important;
+}
+
+/* RAMO */
+.module-page.module-especialistas table th:nth-child(5),
+.module-page.module-especialistas table td:nth-child(5){
+    width:75px !important;
+    min-width:75px !important;
+    max-width:75px !important;
+    white-space:nowrap !important;
+}
+
+/* QUADRO */
+.module-page.module-especialistas table th:nth-child(6),
+.module-page.module-especialistas table td:nth-child(6){
+    width:85px !important;
+    min-width:85px !important;
+    max-width:85px !important;
+    white-space:nowrap !important;
+}
+
+/* UNIDADE */
+.module-page.module-especialistas table th:nth-child(7),
+.module-page.module-especialistas table td:nth-child(7){
+    width:105px !important;
+    min-width:105px !important;
+    max-width:105px !important;
+    white-space:nowrap !important;
+}
+
+/* SITUAÇÃO */
+.module-page.module-especialistas table th:nth-child(8),
+.module-page.module-especialistas table td:nth-child(8){
+    width:90px !important;
+    min-width:90px !important;
+    max-width:90px !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+}
+
+/* AÇÕES */
+.module-page.module-especialistas table th:nth-child(9),
+.module-page.module-especialistas table td:nth-child(9){
+    width:125px !important;
+    min-width:125px !important;
+    max-width:125px !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+}
+
+.module-page.module-especialistas table th{
+    white-space:nowrap !important;
+    font-size:11px !important;
+    font-weight:800 !important;
+}
+
+.module-page.module-especialistas table td:nth-child(2) .nome-especialista,
+.module-page.module-especialistas table td:nth-child(2) .subtexto{
+    display:block !important;
+    max-width:200px !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+}
+
+.module-page.module-especialistas .foto-lista{
+    display:block !important;
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+    max-width:42px !important;
+    margin:0 auto !important;
+    border-radius:9px !important;
+    object-fit:cover !important;
+}
+
+.module-page.module-especialistas .acoes{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:4px !important;
+    flex-wrap:nowrap !important;
+    width:max-content !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+}
+
+.module-page.module-especialistas .acoes .btn{
+    flex:0 1 auto !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    height:29px !important;
+    padding:0 7px !important;
+    font-size:10px !important;
+    white-space:nowrap !important;
+}
+
+/* VER — menor */
+.module-page.module-especialistas .acoes a[href*="especialista.php"]{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 40px !important;
+    width:40px !important;
+    min-width:40px !important;
+    max-width:40px !important;
+    height:26px !important;
+    min-height:26px !important;
+    padding:0 4px !important;
+    border-radius:6px !important;
+    font-size:9px !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+}
+
+/* EDITAR — menor */
+.module-page.module-especialistas .acoes a[href*="especialista_editar.php"]{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 40px !important;
+    width:40px !important;
+    min-width:40px !important;
+    max-width:40px !important;
+    height:26px !important;
+    min-height:26px !important;
+    padding:0 4px !important;
+    border-radius:6px !important;
+    font-size:9px !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+}
+
+/* ELIMINAR mantém as dimensões gerais. */
+.module-page.module-especialistas .acoes a[href*="eliminar"],
+.module-page.module-especialistas .acoes button{
+    flex:0 1 auto !important;
+}
+
+/* Em ecrãs médios, reduzimos apenas o padding geral. */
+@media(max-width:1200px){
+    .module-page.module-especialistas table th,
+    .module-page.module-especialistas table td{
+        padding:7px 6px !important;
+    }
+
+    .module-page.module-especialistas table th{
+        font-size:10px !important;
+    }
+
+    .module-page.module-especialistas table td{
+        font-size:11px !important;
+    }
+}
+
+/* Em ecrãs pequenos a tabela passa a ter rolagem horizontal. */
+@media(max-width:900px){
+    .module-page.module-especialistas .tabela-container,
+    .module-page.module-especialistas .table-wrap{
+        overflow-x:auto !important;
+    }
+
+    .module-page.module-especialistas table{
+        min-width:967px !important;
+    }
+}
+
+@media print{
+    .module-page.module-especialistas table{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+        table-layout:auto !important;
+    }
+
+    .module-page.module-especialistas .acoes a[href*="especialista.php"],
+    .module-page.module-especialistas .acoes a[href*="especialista_editar.php"]{
+        width:auto !important;
+        min-width:0 !important;
+        max-width:none !important;
+        height:auto !important;
+        min-height:0 !important;
+        padding:0 !important;
+    }
+}
